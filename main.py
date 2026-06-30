@@ -8,7 +8,7 @@ def display_image(title, image):
     if len(image.shape) == 2:  # Grayscale image
         plt.imshow(image, cmap='gray')
     else:  # Color image
-        plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+        plt.imshow(cv2.cvtColor(image,  ))
     plt.title(title)
     plt.axis('off')
     plt.show()
