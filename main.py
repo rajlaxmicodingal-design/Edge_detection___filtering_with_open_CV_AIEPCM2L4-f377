@@ -8,7 +8,7 @@ def display_image(title, image):
     if len(image.shape) == 2:  # Grayscale image
         plt.imshow(image, cmap='gray')
     else:  # Color image
-        plt.imshow(cv2.cvtColor(image,  ))
+        plt.imshow(cv2.cvtColor(image,cv2.COLOR_BGR2RGB))
     plt.title(title)
     plt.axis('off')
     plt.show()
@@ -59,6 +59,9 @@ def interactive_edge_detection(image_path):
             # Gaussian Smoothing
             print("Adjust kernel size for Gaussian blur (must be odd, default: 5)")
             kernel_size = int(input("Enter kernel size (odd number): "))
+            if kernel_size % 2 == 0:
+                print("Kernel size must be odd! Defaulting to 5.")
+                kernel_size = 5
             blurred = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
             display_image("Gaussian Smoothed Image", blurred)
 
@@ -66,6 +69,9 @@ def interactive_edge_detection(image_path):
             # Median Filtering
             print("Adjust kernel size for Median filtering (must be odd, default: 5)")
             kernel_size = int(input("Enter kernel size (odd number): "))
+            if kernel_size % 2 == 0:
+                print("Kernel size must be odd! Defaulting to 5.")
+                kernel_size = 5
             median_filtered = cv2.medianBlur(image, kernel_size)
             display_image("Median Filtered Image", median_filtered)
 
